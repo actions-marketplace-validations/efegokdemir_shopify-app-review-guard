@@ -1,12 +1,12 @@
 name: Shopify App Review Guard
 description: Run deterministic offline preflight checks for Shopify App Store and production readiness.
-author: efegokdemir
+author: RexCode Digital Ltd (Efe Gökdemir)
 branding:
   icon: shield
   color: green
 inputs:
   path: { description: Repository path to scan, required: false, default: '.' }
-  config: { description: Reserved for future explicit configuration selection, required: false }
+  config: { description: Shopify app TOML path relative to the scan root, required: false }
   fail-on: { description: Minimum severity that fails the job, required: false, default: high }
   format: { description: human, json, or sarif, required: false, default: human }
   strict: { description: Treat review findings at the threshold as failures, required: false, default: 'false' }
@@ -21,5 +21,5 @@ outputs:
   report: { description: Rendered report }
   rule-ids: { description: Comma-separated rule IDs }
 runs:
-  using: node20
+  using: node24
   main: dist/index.js
